@@ -1,15 +1,19 @@
-// pages/_app.tsx
+// pages/index.tsx
 
-import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
-import ErrorBoundary from '@/components/ErrorBoundary';  // 👈 Import the ErrorBoundary
+import React from 'react';
+import ErrorBoundary from '../components/ErrorBoundary';
+import ErrorProneComponent from '../components/ErrorProneComponent';
 
-function MyApp({ Component, pageProps }: AppProps) {
+
+const Home: React.FC = () => {
   return (
-    <ErrorBoundary>
-      <Component {...pageProps} />
-    </ErrorBoundary>
+    <div style={{ textAlign: 'center', paddingTop: '50px' }}>
+      <h1>Welcome to Rick and Morty App</h1>
+      <ErrorBoundary>
+        <ErrorProneComponent />
+      </ErrorBoundary>
+    </div>
   );
-}
+};
 
-export default MyApp;
+export default Home;
