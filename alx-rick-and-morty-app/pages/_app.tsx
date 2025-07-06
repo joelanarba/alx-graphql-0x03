@@ -1,19 +1,15 @@
-// pages/index.tsx
-
-import React from 'react';
+// pages/_app.tsx
+import '@/styles/globals.css';
+import type { AppProps } from 'next/app';
 import ErrorBoundary from '../components/ErrorBoundary';
-import ErrorProneComponent from '../components/ErrorProneComponent';
+import '@/lib/sentry.client.config'; // 👈 initialize Sentry here
 
-
-const Home: React.FC = () => {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div style={{ textAlign: 'center', paddingTop: '50px' }}>
-      <h1>Welcome to Rick and Morty App</h1>
-      <ErrorBoundary>
-        <ErrorProneComponent />
-      </ErrorBoundary>
-    </div>
+    <ErrorBoundary>
+      <Component {...pageProps} />
+    </ErrorBoundary>
   );
-};
+}
 
-export default Home;
+export default MyApp;
